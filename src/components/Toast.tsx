@@ -35,29 +35,26 @@ const Toast: React.FC<ToastProps> = ({
 
       // Hide toast after duration
       const timer = setTimeout(() => {
-        hideToast();
+        // Hide toast function defined inline to avoid dependency issues
+        Animated.parallel([
+          Animated.timing(fadeAnim, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(slideAnim, {
+            toValue: -100,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+        ]).start(() => {
+          onHide();
+        });
       }, duration);
 
       return () => clearTimeout(timer);
     }
-  }, [visible, duration, fadeAnim, slideAnim, hideToast]);
-
-  const hideToast = useCallback(() => {
-    Animated.parallel([
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-      Animated.timing(slideAnim, {
-        toValue: -100,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      onHide();
-    });
-  }, [fadeAnim, slideAnim, onHide]);
+  }, [visible, duration, fadeAnim, slideAnim, onHide]);
 
   if (!visible) return null;
 
