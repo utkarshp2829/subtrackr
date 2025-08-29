@@ -3,13 +3,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
 import { Animated, Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
-import { Card, Chip, Title } from 'react-native-paper';
+import { Card, Chip, Title, useTheme } from 'react-native-paper';
 import Toast from '../../src/components/Toast';
 
 const screenWidth = Dimensions.get('window').width;
 
 export default function DashboardScreen() {
-
+  const theme = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
@@ -21,7 +21,7 @@ export default function DashboardScreen() {
       duration: 800,
       useNativeDriver: true,
     }).start();
-  }, [fadeAnim]);
+  }, []);
 
   // Mock data for spending by category
   const spendingData = [
