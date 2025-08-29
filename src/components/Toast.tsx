@@ -40,9 +40,9 @@ const Toast: React.FC<ToastProps> = ({
 
       return () => clearTimeout(timer);
     }
-  }, [visible]);
+  }, [visible, duration, fadeAnim, slideAnim, hideToast]);
 
-  const hideToast = () => {
+  const hideToast = useCallback(() => {
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 0,
@@ -57,7 +57,7 @@ const Toast: React.FC<ToastProps> = ({
     ]).start(() => {
       onHide();
     });
-  };
+  }, [fadeAnim, slideAnim, onHide]);
 
   if (!visible) return null;
 
