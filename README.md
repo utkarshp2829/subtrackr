@@ -1,50 +1,122 @@
-# Welcome to your Expo app 👋
+# SubTrackr
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile app built with Expo for tracking subscriptions and recurring payments.
 
-## Get started
+## Features
 
-1. Install dependencies
+- 📊 Dashboard with subscription overview
+- 💳 Subscription management
+- 📈 Insights and analytics
+- 👤 User profile management
 
+## Tech Stack
+
+- **Framework**: React Native with Expo
+- **Language**: TypeScript
+- **Navigation**: React Navigation (Bottom Tabs + Stack)
+- **UI Components**: React Native Paper
+- **Charts**: React Native Chart Kit
+- **Backend**: Firebase (configured but not initialized)
+- **Icons**: Expo Vector Icons
+
+## Project Structure
+
+```
+src/
+├── screens/           # Screen components
+│   ├── DashboardScreen.tsx
+│   ├── SubscriptionsScreen.tsx
+│   ├── InsightsScreen.tsx
+│   ├── ProfileScreen.tsx
+│   └── index.ts
+├── navigation/        # Navigation setup
+│   ├── AppNavigator.tsx
+│   └── BottomTabs.tsx
+├── components/        # Reusable UI components
+│   ├── SubscriptionCard.tsx
+│   └── index.ts
+├── services/          # API and external services
+│   └── firebase.ts
+└── utils/            # Utility functions
+    └── dateHelpers.ts
+```
+
+## Getting Started
+
+1. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Start the development server**:
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+3. **Run on iOS**:
+   ```bash
+   npm run ios
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+4. **Run on Android**:
+   ```bash
+   npm run android
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Navigation
 
-## Get a fresh project
+The app uses a bottom tab navigation with 4 main screens:
+- **Dashboard**: Overview of all subscriptions
+- **Subscriptions**: Detailed subscription management
+- **Insights**: Analytics and spending patterns
+- **Profile**: User settings and preferences
 
-When you're ready, run:
+## Firebase Setup
 
-```bash
-npm run reset-project
-```
+To enable Firebase functionality:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Get your Firebase configuration
+3. Update `src/services/firebase.ts` with your config
+4. Uncomment the Firebase initialization code
 
-## Learn more
+## Available Scripts
 
-To learn more about developing your project with Expo, look at the following resources:
+- `npm start` - Start the Expo development server
+- `npm run ios` - Run on iOS simulator
+- `npm run android` - Run on Android emulator
+- `npm run web` - Run on web browser
+- `npm run lint` - Run ESLint
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Dependencies
 
-## Join the community
+### Core Navigation
+- @react-navigation/native
+- @react-navigation/bottom-tabs
+- @react-navigation/native-stack
+- react-native-screens
+- react-native-safe-area-context
 
-Join our community of developers creating universal apps.
+### UI & Animation
+- react-native-paper
+- react-native-gesture-handler
+- react-native-reanimated
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Charts & Visualization
+- react-native-chart-kit
+- react-native-svg
+
+### Backend
+- firebase
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
